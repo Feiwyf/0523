@@ -31,7 +31,7 @@ function draw() {
 
     // 畫紅色粗線
     stroke(255, 0, 0);
-    strokeWeight(15);
+    strokeWeight(30);
     noFill();
     for (let i = 0; i < indices.length - 1; i++) {
       const idxA = indices[i];
