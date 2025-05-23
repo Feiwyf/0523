@@ -25,15 +25,28 @@ function draw() {
 
   if (predictions.length > 0) {
     const keypoints = predictions[0].scaledMesh;
+
+    // 畫出所有特徵點（debug用）
+    fill(0, 255, 0);
+    noStroke();
+    for (let i = 0; i < keypoints.length; i++) {
+      const [x, y] = keypoints[i];
+      ellipse(x, y, 5, 5);
+    }
+
+    // 畫紅色粗線
     stroke(255, 0, 0);
     strokeWeight(15);
     noFill();
     for (let i = 0; i < indices.length - 1; i++) {
       const idxA = indices[i];
       const idxB = indices[i + 1];
-      const [x1, y1] = keypoints[idxA];
-      const [x2, y2] = keypoints[idxB];
-      line(x1, y1, x2, y2);
+      // 檢查索引是否有效
+      if (keypoints[idxA] && keypoints[idxB]) {
+        const [x1, y1] = keypoints[idxA];
+        const [x2, y2] = keypoints[idxB];
+        line(x1, y1, x2, y2);
+      }
     }
   }
 }
