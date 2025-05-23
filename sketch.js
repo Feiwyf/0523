@@ -28,12 +28,12 @@ function draw() {
     stroke(255, 0, 0);
     strokeWeight(15);
     noFill();
-    beginShape();
-    for (let i = 0; i < indices.length; i++) {
-      const idx = indices[i];
-      const [x, y] = keypoints[idx];
-      vertex(x, y);
+    for (let i = 0; i < indices.length - 1; i++) {
+      const idxA = indices[i];
+      const idxB = indices[i + 1];
+      const [x1, y1] = keypoints[idxA];
+      const [x2, y2] = keypoints[idxB];
+      line(x1, y1, x2, y2);
     }
-    endShape();
   }
 }
